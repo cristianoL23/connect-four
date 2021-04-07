@@ -67,35 +67,20 @@ class Game:
             else:
                 win = 0
 
-        # for c in range(COLUMN_COUNT-3):
-		# for r in range(ROW_COUNT-3):
-		# 	if board[r][c] == piece and board[r+1][c+1] == piece and board[r+2][c+2] == piece and board[r+3][c+3] == piece:
-		# 		return True
-
         # check win positive diagonal
-        for c in range(moveCol, self.board_class.getCols(), 1):
-            for r in range(currentRow, -1, -1):
-                if r - 3 <= self.board_class.getRows() and c + 3 <= self.board_class.getCols():
+        win = 0
+        for c in range(self.board_class.getCols()):
+            for r in range(self.board_class.getRows() - 1, -1, -1):
+                if r - 3 >= 0 and c + 3 < self.board_class.getCols():
                     if board[r][c] == self.turn and board[r-1][c+1] == self.turn and board[r-2][c+2] == self.turn and board[r-3][c+3] == self.turn:
-                        print("there is a diagonal")
                         win = 4
-                    else: 
-                        win = 0
-                # if board[r][c] == self.turn:
-                #     win += 1
-                #     print(win)
-                # else:
-                #     win = 0 
-                #     print(win)
-                
-        # if board[currentRow][moveCol] == self.turn and board[currentRow + 1][moveCol + 1] == self.turn and board[currentRow + 2][moveCol + 2] == self.turn and board[currentRow + 3][moveCol + 3] == self.turn:
-        #     win = 4
 
-        # for row in range(self.board_class.getRows()):
-        #     for cols in range(self.board_class.getCols):
-        #         if board[moveCol][row] == self.turn:
-        #             win += 1
-        #         else:
-        #             win = 0
+        #check negative diagonal
+        win = 0
+        for c in range(self.board_class.getCols()):
+            for r in range(self.board_class.getRows()):
+                if r + 3 < self.board_class.getRows() and c + 3 < self.board_class.getCols():
+                    if board[r][c] == self.turn and board[r+1][c+1] == self.turn and board[r+2][c+2] == self.turn and board[r+3][c+3] == self.turn:
+                        win = 4
 
         return win
