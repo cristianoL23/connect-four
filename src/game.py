@@ -34,18 +34,7 @@ class Game:
         else:
             self.turn = 1
 
-    # TODO: finsih win checking algorithm
     def checkForWin(self, moveCol, currentRow):
-        #     #4 of the same number in a line vertical, horizontal, or
-        #     #to check above board[col][i + 1]
-        #     #to check below board[col][i - 1]
-        #     #to check left board[col -1][i]
-        #     #to check right board[col + 1][i]
-        #     #Diagonals
-        #     #to check up-left board[col -1][i + 1]
-        #     #to check up-right board[col +1][i+ ]
-        #     #to check down-left board[col -1][i- 1]
-        #     #o check down-right board[col +1][i- 1]
         board = self.board_class.getBoard()
         win = 0
 
